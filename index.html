@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Daily Compassion - Rutgers</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://maxst.icons8.com/vue-static/landings/line-awesome/line-awesome/1.3.0/css/line-awesome.min.css">
+  <style>
+    :root {
+      --rutgers-red: #CC0033;
+      --rutgers-red-dark: #A3002A;
+      --rutgers-red-deeper: #7A001F;
+      --rutgers-red-light: #E8002E;
+      --rutgers-red-pale: #FAEAEE;
+      --rutgers-red-muted: #F5D0D9;
+      --gray-50: #F9FAFB;
+      --gray-100: #F3F4F6;
+      --gray-200: #E5E7EB;
+      --gray-600: #4B5563;
+      --gray-700: #374151;
+      --gray-800: #1F2937;
+      --gray-900: #111827;
+      --white: #FFFFFF;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--gray-800);
+      background: var(--white);
+      line-height: 1.6;
+    }
+
+    /* NAV */
+    .lp-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--white);
+      border-bottom: 1px solid var(--gray-200);
+      box-shadow: 0 1px 8px rgba(204,0,51,0.07);
+    }
+    .lp-nav-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .lp-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    /* SVG Logo */
+    .lp-logo svg { display: block; }
+    .lp-logo-text {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--rutgers-red);
+      line-height: 1.2;
+    }
+    .lp-logo-text span {
+      display: block;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: var(--gray-600);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .lp-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .lp-nav-links a {
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--gray-700);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .lp-nav-links a:hover { color: var(--rutgers-red); }
+    .lp-nav-links a.active { color: var(--rutgers-red); }
+    .lp-nav-cta {
+      background: var(--rutgers-red) !important;
+      color: var(--white) !important;
+      padding: 9px 22px !important;
+      border-radius: 6px !important;
+      font-weight: 600 !important;
+      transition: background 0.2s !important;
+    }
+    .lp-nav-cta:hover { background: var(--rutgers-red-dark) !important; }
+    .lp-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 4px;
+    }
+    .lp-hamburger span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: var(--gray-800);
+      border-radius: 2px;
+    }
+
+    /* HERO */
+    .lp-hero {
+      background: linear-gradient(135deg, var(--rutgers-red-pale) 0%, var(--white) 60%);
+      padding: 80px 24px 60px;
+    }
+    .lp-hero-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: center;
+    }
+    .lp-hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--rutgers-red-muted);
+      color: var(--rutgers-red-dark);
+      font-size: 0.78rem;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .lp-hero-title {
+      font-size: 2.8rem;
+      font-weight: 800;
+      line-height: 1.15;
+      color: var(--gray-900);
+      margin-bottom: 18px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--rutgers-red) 0%, var(--rutgers-red-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .lp-hero-desc {
+      font-size: 1rem;
+      color: var(--gray-600);
+      margin-bottom: 28px;
+      max-width: 480px;
+    }
+    .lp-hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 36px;
+    }
+    .btn-primary {
+      background: var(--rutgers-red);
+      color: var(--white);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--rutgers-red-dark); transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--rutgers-red);
+      border: 2px solid var(--rutgers-red);
+      padding: 11px 26px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: inherit;
+    }
+    .btn-ghost:hover { background: var(--rutgers-red); color: var(--white); }
+
+    .lp-hero-stats {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--white);
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 16px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      width: fit-content;
+    }
+    .stat {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .stat strong {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--rutgers-red);
+    }
+    .stat span {
+      font-size: 0.72rem;
+      color: var(--gray-600);
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .stat-divider {
+      width: 1px;
+      height: 36px;
+      background: var(--gray-200);
+    }
+
+    /* Hero Visual */
+    .lp-hero-visual {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+    .lp-hero-img-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 400px;
+    }
+    .lp-hero-img {
+      width: 100%;
+      border-radius: 18px;
+      display: block;
+      box-shadow: 0 20px 60px rgba(204,0,51,0.18);
+    }
+    .lp-hero-blob {
+      position: absolute;
+      inset: -20px;
+      background: radial-gradient(ellipse at 60% 40%, rgba(204,0,51,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      z-index: -1;
+    }
+    .lp-hero-card {
+      position: absolute;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 14px 18px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      max-width: 220px;
+    }
+    .card-1 {
+      top: 10%;
+      left: -15%;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .card-1 i { color: var(--rutgers-red); }
+    .card-1 p {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--gray-800);
+      line-height: 1.4;
+    }
+    .card-1 span {
+      font-size: 0.68rem;
+      color: var(--gray-600);
+    }
+    .card-2 {
+      bottom: 12%;
+      right: -10%;
+    }
+    .progress-bar-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .progress-bar-wrap > span { font-size: 0.75rem; font-weight: 600; color: var(--gray-800); }
+    .progress-bar {
+      width: 160px;
+      height: 8px;
+      background: var(--gray-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--rutgers-red), var(--rutgers-red-light));
+      border-radius: 4px;
+    }
+    .progress-label { font-size: 0.7rem; color: var(--gray-600); }
+
+    .lp-hero-scroll {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      margin-top: 48px;
+      color: var(--gray-600);
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 36px;
+      background: linear-gradient(to bottom, var(--rutgers-red), transparent);
+    }
+
+    /* SECTION SHARED */
+    .lp-section-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .section-eyebrow {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--rutgers-red);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .section-eyebrow.light { color: rgba(255,255,255,0.8); }
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--gray-900);
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .section-title.light { color: var(--white); }
+    .section-desc {
+      font-size: 0.97rem;
+      color: var(--gray-600);
+      max-width: 580px;
+      margin-bottom: 40px;
+    }
+
+    /* FEATURES */
+    .lp-features {
+      padding: 80px 24px;
+      background: var(--white);
+    }
+    .lp-features .lp-section-inner { text-align: center; }
+    .lp-features .section-desc { margin-left: auto; margin-right: auto; }
+    .lp-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      text-align: left;
+    }
+    .feature-card {
+      background: var(--gray-50);
+      border: 1px solid var(--gray-200);
+      border-radius: 14px;
+      padding: 28px;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      box-shadow: 0 8px 30px rgba(204,0,51,0.1);
+      transform: translateY(-3px);
+    }
+    .feature-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+      color: var(--rutgers-red);
+    }
+    .feature-card h3 {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--gray-900);
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.875rem;
+      color: var(--gray-600);
+      line-height: 1.6;
+    }
+
+    /* ABOUT */
+    .lp-about {
+      padding: 80px 24px;
+      background: var(--gray-50);
+    }
+    .lp-about-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 56px;
+      align-items: center;
+    }
+.lp-about-img-wrap {
+  border-radius: 24px;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.lp-about-img-wrap video {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+    .lp-about-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .lp-about-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+    }
+    .lp-about-list li i {
+      color: var(--rutgers-red);
+      font-size: 1.2rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* DOWNLOAD */
+    .lp-download {
+      padding: 80px 24px;
+      background: var(--rutgers-red);
+      position: relative;
+      overflow: hidden;
+    }
+    .lp-download-bg {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 80% 50%, rgba(255,255,255,0.1) 0%, transparent 60%),
+                  radial-gradient(ellipse at 20% 80%, rgba(0,0,0,0.15) 0%, transparent 50%);
+    }
+    .lp-download-inner {
+      position: relative;
+      text-align: center;
+    }
+    .lp-download-desc {
+      color: rgba(255,255,255,0.85);
+      font-size: 1rem;
+      margin-bottom: 32px;
+    }
+    .lp-download-form {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .lp-download-form input {
+      padding: 13px 20px;
+      border-radius: 8px;
+      border: none;
+      font-size: 0.95rem;
+      font-family: inherit;
+      width: 280px;
+      outline: none;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+    }
+    .btn-white {
+      background: var(--white);
+      color: var(--rutgers-red);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-white:hover { background: var(--gray-100); transform: translateY(-1px); }
+
+    /* FOOTER */
+    .lp-footer {
+      background: var(--gray-900);
+      color: var(--gray-200);
+      padding: 40px 24px;
+    }
+    .lp-footer-inner {
+      max-width: 1160px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .lp-footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .lp-footer-brand p {
+      font-size: 0.82rem;
+      color: #9CA3AF;
+    }
+    .lp-footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+    .lp-footer-legal a {
+      font-size: 0.82rem;
+      color: #9CA3AF;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .lp-footer-legal a:hover { color: var(--white); }
+
+    /* RUTGERS LOGO SVG */
+    .rutgers-logo-svg {
+      width: 44px;
+      height: 44px;
+    }
+
+    @media (max-width: 900px) {
+      .lp-hero-inner { grid-template-columns: 1fr; }
+      .lp-hero-visual { display: none; }
+      .lp-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .lp-about-inner { grid-template-columns: 1fr; }
+      .lp-about-img-wrap { display: none; }
+    }
+    @media (max-width: 600px) {
+      .lp-hero-title { font-size: 2rem; }
+      .lp-feature-grid { grid-template-columns: 1fr; }
+      .lp-nav-links { display: none; }
+      .lp-hamburger { display: flex; }
+      .lp-footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="lp-nav">
+  <div class="lp-nav-inner">
+    <a class="lp-logo" href="#">
+      <!-- Rutgers-themed logo: shield with R -->
+       
+
+    <img src="Daily-Compassion-Rutgers-Logo-1.png" alt="Company Logo" width="70" height="70">
+
+
+      <div class="lp-logo-text">
+        Daily Compassion
+        <span>Rutgers University</span>
+      </div>
+    </a>
+    <nav>
+      <ul class="lp-nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#download" class="lp-nav-cta">Get Started</a></li>
+      </ul>
+    </nav>
+    <button class="lp-hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section id="home" class="lp-hero">
+  <div class="lp-hero-inner">
+    <div class="lp-hero-text">
+      <p class="lp-hero-badge">✦ Grounded in scientific research</p>
+      <h1 class="lp-hero-title">
+        Welcome to<br>
+        <span class="gradient-text">Daily Compassion - Rutgers</span><br>
+
+      </h1>
+      <p class="lp-hero-desc">
+        Grounded in scientific research, Daily Compassion creates a welcoming space for you to share and receive kindness.<br>
+        Tailored to your social connections and personal growth goals, the app helps you build a habit of brief daily meditation.
+      </p>
+      <div class="lp-hero-actions">
+        <button class="btn-primary">Start for Free</button>
+        <button class="btn-ghost">Learn More</button>
+      </div>
+      <div class="lp-hero-stats">
+        <div class="stat">
+          <strong>3 min</strong>
+          <span>Per Daily Session</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>4 sessions</strong>
+          <span>Research-backed Impact</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <strong>Daily</strong>
+          <span>Compassion Habit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="lp-hero-visual">
+      <div class="lp-hero-card card-1">
+        <i class="las la-heart la-2x"></i>
+        <p>"You've done enough today. You are enough."</p>
+        <span>— Today's compassion message</span>
+      </div>
+      <div class="lp-hero-img-wrap">
+        <img src="https://compassionmode.com/images/compassion.webp" alt="Compassion" class="lp-hero-img">
+        <div class="lp-hero-blob"></div>
+      </div>
+      <div class="lp-hero-card card-2">
+        <div class="progress-bar-wrap">
+          <span>Today's Meditation</span>
+          <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+          <span class="progress-label">3 of 4 sessions completed</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align:center;">
+    <div class="lp-hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" class="lp-features">
+  <div class="lp-section-inner">
+    <p class="section-eyebrow">What You Can Do</p>
+    <h2 class="section-title">Build compassion in a few minutes a day.</h2>
+    <p class="section-desc">Through Daily Compassion, you can share personal wishes, exchange anonymous well-wishes, and set daily intentions to strengthen reflection and compassion.</p>
+    <div class="lp-feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FAEAEE, #F5D0D9);">
+          <i class="las la-comment-heart la-2x"></i>
+        </div>
+        <h3>Share Your Personal Wishes</h3>
+        <p>Share your personal wishes in your own words to support emotional clarity and authentic self-reflection.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #E0C3FC, #8EC5FC);">
+     
+        </div>
+        <h3>Anonymous Well-Wishes</h3>
+        <p>Send and receive anonymous well-wishes to feel connected with people around the world.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #D4FC79, #96E6A1);">
+        </div>
+        <h3>Set Daily Intentions</h3>
+        <p>Set daily intentions to strengthen personal reflection and compassion for yourself and others.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #A1C4FD, #C2E9FB);">
+        </div>
+        <h3>3-Minute Guided Sessions</h3>
+        <p>Build a sustainable habit with brief daily meditation sessions designed for your everyday routine.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FBC2EB, #A6C1EE);">
+        </div>
+        <h3>Research-Backed Outcomes</h3>
+        <p>Research shows measurable improvements in psychological well-being after as little as four sessions.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" style="background: linear-gradient(135deg, #FDDB92, #D1FDFF);">
+        </div>
+        <h3>Support Positive Mood</h3>
+        <p>App use is associated with improved well-being and positive mood, and decreased depressive symptoms and anxiety.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="lp-about">
+  <div class="lp-section-inner lp-about-inner">
+    <div class="lp-about-img-wrap">
+
+    <video width="400" height="600" autoplay loop muted playsinline>
+        <source src="dc-app.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+
+      
+    </div>
+    <div class="lp-about-text">
+      <p class="section-eyebrow">Our Mission</p>
+      <h2 class="section-title">Why Daily Compassion?</h2>
+      <p style="font-size:0.95rem; color:#4B5563; margin-bottom:20px;">Our research shows that as little as four sessions of three-minute meditation using Daily Compassion can lead to measurable improvements in psychological well-being.</p>
+      <ul class="lp-about-list">
+        <li><i class="las la-check-circle"></i><span>Grounded in scientific research and measurable improvements in psychological well-being</span></li>
+        <li><i class="las la-check-circle"></i><span>Tailored to your social connections and personal growth goals</span></li>
+        <li><i class="las la-check-circle"></i><span>A welcoming space to share and receive kindness every day</span></li>
+        <li><i class="las la-check-circle"></i><span>Connect to a global community of kindness and build a daily meditation habit</span></li>
+      </ul>
+      <button class="btn-primary">Get Started Now</button>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOAD / CTA -->
+<section id="download" class="lp-download">
+  <div class="lp-download-bg"></div>
+  <div class="lp-section-inner lp-download-inner">
+    <p class="section-eyebrow light">Get Started</p>
+    <h2 class="section-title light">Start your journey today.</h2>
+    <p class="lp-download-desc">
+      App use is associated with improved well-being and positive mood,<br>
+      and decreased depressive symptoms and anxiety.
+    </p>
+    <div class="lp-download-form">
+      <input type="email" placeholder="Enter your email">
+      <button class="btn-white">Start Free</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="lp-footer">
+  <div class="lp-footer-inner">
+    <div class="lp-footer-brand">
+
+        <img src="Rutgers_Scarlet_Knights_logo.svg" alt="Company Logo" width="40" height="70">
+
+      <p>© 2026 Daily Compassion – Rutgers. All rights reserved.</p>
+    </div>
+    <div class="lp-footer-legal">
+      <a href="https://compassionmode.com/policy">Privacy Policy</a>
+      <a href="https://compassionmode.com/terms">Terms of Service</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
